@@ -1,5 +1,20 @@
 # Multi-Agent Orchestration System - Implementation Overview
 
+## Overview
+
+This repository provides a complete multi-agent orchestration system with production-ready components including:
+
+- **Prompt Templates** - Structured prompt building with caching support
+- **Response Parsing** - Flexible JSON and legacy text format parsing
+- **Provider-Level Attention Weight Caching** - Anthropic prompt caching for static content
+- **Request-Level Caching** - Per-request content caching for large responses
+- **Example Agents** - Chat, Integrations, Search tool
+- **Example Service Tools** - Gmail integration and extensible service tool framework
+- **Scripts** - Utility scripts for setup and maintenance
+- **Tests** - Test suite for validation
+- **Multi-Provider Support** - OpenAI, Anthropic, Google Gemini, and xAI
+- **Production Features** - Retry logic, fallbacks, cancellation, logging, and monitoring
+
 ## Table of Contents
 - [System Architecture](#system-architecture)
 - [Core Components](#core-components)

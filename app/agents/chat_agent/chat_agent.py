@@ -142,15 +142,6 @@ async def get_chat_response(messages: List[Message], user_id: UUID = None, supab
         # Create integrations agent action
         call_integrations_agent = create_integrations_agent_action(str(user_id), supabase, INTEGRATIONS_AGENT_LLM_MODEL, request_id, calling_agent="Chat Agent", integration_in_progress=integration_in_progress)
         
-        # Create retrieval agent action
-        call_retrieval_agent = create_retrieval_agent_action(str(user_id), supabase, R_A_LLM_MODEL, request_id, calling_agent="Chat Agent")
-        
-        # Create EDA agent action
-        call_eda_agent = create_eda_agent_action(str(user_id), supabase, INTEGRATIONS_AGENT_LLM_MODEL, request_id, calling_agent="Chat Agent")
-        
-        # Create wellness agent action
-        call_wellness_agent = create_wellness_agent_action(str(user_id), supabase, WELLNESS_AGENT_LLM_MODEL, request_id, calling_agent="Chat Agent")
-        
         user_info_result = supabase.from_('user_profiles').select(
             'name', 'location', 'language', 'education', 'profession'
         ).eq('id', user_id).execute()
