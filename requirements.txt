@@ -1,0 +1,60 @@
+# Core dependencies
+fastapi==0.104.0
+uvicorn==0.23.2
+python-dotenv==1.0.0
+pydantic==2.10.3
+requests==2.31.0
+
+# API Clients
+openai==1.78.1  # See https://pypi.org/project/openai/ (latest as of 2025-05-12)
+anthropic==0.8.0
+duckduckgo-search==8.0.1
+stripe==12.4.0  # For metered billing and usage tracking
+
+# Database
+supabase==2.15.1
+python-jose==3.3.0  # For JWT validation
+
+# AWS
+boto3==1.28.64
+
+# Data Processing
+numpy>=1.24.0,<2.0.0
+pandas==2.1.1
+PyPDF2==3.0.1
+pypdf==3.16.2  # For PdfReader
+pdf2image==1.17.0  # For PDF to image conversion
+pytesseract==0.3.10  # For OCR text extraction
+reportlab==4.0.7  # For PDF creation
+pillow==10.0.1  # For image processing
+python-docx>=1.1.0  # For Word document manipulation
+openpyxl==3.1.2  # For Excel file operations
+striprtf==0.0.29  # For RTF document processing
+
+
+# Google and Microsoft Integration
+google-auth==2.23.3
+google-auth-oauthlib==1.1.0
+google-api-python-client==2.105.0
+msal==1.24.1  # Microsoft Authentication Library
+
+# Testing
+pytest==7.4.2
+
+# Sandbox Infrastructure (Phase 2)
+docker==7.0.0
+cryptography==41.0.7 
+
+httpx==0.28.1
+
+bs4==0.0.1
+
+python-multipart==0.0.17
+
+# Web scraping for dynamic content generation
+selenium==4.15.2
+
+# Async support for nested event loops
+nest_asyncio==1.6.0
+
+google-genai==1.4.0

@@ -15,6 +15,8 @@ This repository provides a complete multi-agent orchestration system with produc
 - **Multi-Provider Support** - OpenAI, Anthropic, Google Gemini, and xAI
 - **Production Features** - Retry logic, fallbacks, cancellation, logging, and monitoring
 
+**Note:** This implementation is built around a Supabase database. You will either need to implement that or remove the database-dependent code to get the server to run.
+
 ## Table of Contents
 - [System Architecture](#system-architecture)
 - [Core Components](#core-components)
