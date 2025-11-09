@@ -14,8 +14,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import logging
-from app.endpoints import chat, health, medical_records
-from contextlib import asynccontextmanager
+from app.endpoints import chat
 from uuid import uuid4
 import asyncio
 import threading
@@ -147,14 +146,6 @@ async def root():
     return {"message": "Juniper API"}
 
 app.include_router(chat.router)
-app.include_router(health.router)
-app.include_router(medical_records.router)
-
-# Add Automation API router (Phase 1-2 bridge)
-from app.api.automations import router as automations_router
-app.include_router(automations_router)
-
-# Add OAuth callback router
 
 def run_server(port: int):
     """Run a single server instance on the specified port"""
