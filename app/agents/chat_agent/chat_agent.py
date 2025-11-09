@@ -222,14 +222,14 @@ async def get_chat_response(messages: List[Message], user_id: UUID = None, supab
 
 Further Instructions:
 1. If the user asks for a scheduled or recurring job, include in your response: "Juniper does not yet support event driven automations, but this is on our roadmap.  For now, all actions must be prompted."
-2. The other agents cannot directly communicate with the human user.  However, if they write a satisfactory response that should be relayed directly to the human user, simply respond with '$$$observation$$$' maintaing JSON format.  No additional commentary needed unless you need to add critical context not covered in the sub-agent's response.
+2. The other agents cannot directly communicate with the human user.  However, if they write a satisfactory response that should be relayed directly to the human user, simply respond with '$$$observation$$$' maintaining JSON format.  No additional commentary needed unless you need to add critical context not covered in the sub-agent's response.
 3. Please keep responses to the user to 1-3 sentences in length unless: 
     a. The user requests a more detailed response; user preferences should always override system instructions
     b. You are embedding a response from another agent as outlined above  
     """
 
         chat_agent = BaseAgent(
-            actions=[call_integrations_agent, search_action, call_retrieval_agent, call_config_agent, fetch_from_cache_action, call_wellness_agent],
+            actions=[call_integrations_agent, search_action, fetch_from_cache_action],
             # custom_examples=[WEB_SEARCH_EXAMPLE, NO_ACTION_EXAMPLE],
             additional_context=additional_context,
             general_instructions=general_chat_instructions,

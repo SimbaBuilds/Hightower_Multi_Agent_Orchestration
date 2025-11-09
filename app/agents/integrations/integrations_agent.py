@@ -1075,9 +1075,21 @@ def create_integrations_tools(user_id: str = None, supabase: SupabaseClient = No
     
     tools = []
     
-    # 0. Fetch from Cache Tool
     from app.services.cache_tools import create_fetch_from_cache_action
     tools.append(create_fetch_from_cache_action(request_id))
+    
+    
+        # 0. Fetch Recently Used Integrations
+    tools.append(Action(
+        name="fetch_recently_used_integrations",
+        description="Fetch the user's recently used integrations ordered by last use.  Use this if it is unclear what service to fetch tools for.  If it is still unclear after using this tool, inform the chat agent.",
+        parameters={
+            "limit": {"type": "integer", "description": "Maximum number of integrations to return"}
+        },
+        returns="List of recently used integrations with status and usage info",
+        example='Action: fetch_recently_used_integrations: {"limit": 15}',
+        handler=lambda input_str: fetch_recently_used_integrations(input_str, user_id, supabase, request_id)
+    ))
     
     # 1. Fetch Tool Names and Descriptions
     tools.append(Action(
@@ -1104,19 +1116,9 @@ def create_integrations_tools(user_id: str = None, supabase: SupabaseClient = No
         handler=lambda input_str: fetch_tool_data(input_str, user_id, supabase, request_id, agent_instance)
     ))
     
-    # 3. Fetch Recently Used Integrations
-    tools.append(Action(
-        name="fetch_recently_used_integrations",
-        description="Fetch the user's recently used integrations ordered by last use.  Use this if it is unclear what service to fetch tools for.  If it is still unclear after using this tool, inform the chat agent.",
-        parameters={
-            "limit": {"type": "integer", "description": "Maximum number of integrations to return"}
-        },
-        returns="List of recently used integrations with status and usage info",
-        example='Action: fetch_recently_used_integrations: {"limit": 15}',
-        handler=lambda input_str: fetch_recently_used_integrations(input_str, user_id, supabase, request_id)
-    ))
+
     
-    # 4. Use Service Tool
+    # 3. Use Service Tool
     async def use_service_tool_handler(input_str):
         return await use_service_tool_async(input_str, user_id, supabase, request_id)
     tools.append(Action(
